@@ -1,19 +1,20 @@
 # OsMutation
-Reinstall Any OpenVZ/LXC VPS to Debian/CentOS/Alpine
+将任意 OpenVZ/LXC VPS 重装为 Debian/CentOS/Alpine
 
-## Features
-- Support both OpenVZ 7 and LXC
-- Support reinstall to multiple operating systems
+## 功能特性
+- 支持 OpenVZ 7 和 LXC
+- 支持重装为多种操作系统
 
-## Usage
+## 使用方法
+# 常规方式：
 ```
 wget -qO OsMutation.sh https://raw.githubusercontent.com/LloydAsp/OsMutation/main/OsMutation.sh && chmod u+x OsMutation.sh && ./OsMutation.sh
 ```
-or
+或者
 ```
 curl -so OsMutation.sh https://raw.githubusercontent.com/LloydAsp/OsMutation/main/OsMutation.sh && chmod u+x OsMutation.sh && ./OsMutation.sh
 ```
-for vps whose disk is small (less than 1GiB, experimental support)
+针对小硬盘 VPS（小于 1GiB，实验性支持）：
 
 ```
 wget -qO OsMutation.sh https://raw.githubusercontent.com/LloydAsp/OsMutation/main/OsMutationTight.sh && chmod u+x OsMutation.sh && ./OsMutation.sh
@@ -21,18 +22,16 @@ wget -qO OsMutation.sh https://raw.githubusercontent.com/LloydAsp/OsMutation/mai
 
 [![asciicast](https://asciinema.org/a/582009.svg)](https://asciinema.org/a/582009)
 
-## Notice
-- A fresh system will be installed and all old data will be wiped! Backup your important data first.
-- OpenVZ 7 and above is support, not OpenVZ 6.
-- Virtual Machine is not supported, such as kvm, xen and vmware
+## 注意事项 (Notice)
+- 将会安装全新的系统，所有旧数据都会被清空！请务必先备份重要数据。
+- 支持 OpenVZ 7 及以上版本，不支持 OpenVZ 6。
+- 不支持 虚拟机（如 KVM、Xen 和 VMware）。
 
-## How Does This work
-Openvz and Lxc are typical container virtualization technologys. The host OS kernel is shared with both the host and other containers, and all the applications and runtime libraries required by os are packed together in container itself.
+## 工作原理
+OpenVZ 和 LXC 属于容器虚拟化技术，与宿主机共享内核。如果你想要替换操作系统，只需替换容器中的文件即可。就这样，简单明了。只需注意操作的顺序，因为文件之间存在一些依赖关系。
 
-So if you want to replace the operating system, you can just replace the files in the container. That's it, simple and straightforward. Just pay attention to the order of action since there are some dependences of files.
-
-## Template Sources
-LXC templates are directly downloaded from http://images.linuxcontainers.org, OpenVZ 7 templates are extracted from OpenVZ 7 official iso.
+## 模板来源
+LXC 模板下载自 linuxcontainers.org，OpenVZ 7 模板提取自官方 ISO。
 
 ## Thanks To
 - Inspired by https://gist.github.com/trimsj/c1fefd650b5f49ceb8f3efc1b6a1404d
